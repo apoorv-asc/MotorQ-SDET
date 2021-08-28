@@ -16,16 +16,16 @@ const Booking = require('./models/Booking');
 const course = require('./models/Course');
 
 app.get('/createCourses',async (req,res)=>{
-    var c1 = new course({courseName:"DSA",startTime:1400,endTime:1500,available:60});
+    var c1 = new course({courseName:"DSA",startTime:1400,endTime:1500,total:60,available:60});
     await c1.save();
 
-    var c1 = new course({courseName:"OOPS",startTime:1400,endTime:1500,available:60});
+    var c1 = new course({courseName:"OOPS",startTime:1400,endTime:1500,total:60,available:60});
     await c1.save();
 
-    var c1 = new course({courseName:"DBMS",startTime:1330,endTime:1430,available:60});
+    var c1 = new course({courseName:"DBMS",startTime:1330,endTime:1430,total:60,available:60});
     await c1.save();
 
-    var c1 = new course({courseName:"Operating System",startTime:1100,endTime:1200,available:60});
+    var c1 = new course({courseName:"Operating System",startTime:1100,endTime:1200,total:60,available:60});
     await c1.save();
 
     res.redirect('/');
@@ -46,7 +46,7 @@ app.post('/book',async (req,res)=>{
     if(user != null ){
         for(var i=0;i<(user.course).length;i++){
             if(!(user.course[i].startTime>req.body.endTime || user.course[i].endTime<req.body.startTime)){
-                req.send('Clashed');
+                req.redirect(`/clashed/${req.body.studentName}`);
             }
         }
         user.course.push({
