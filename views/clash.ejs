@@ -1,0 +1,22 @@
+<html>
+    <style>
+
+    </style>
+    <body>
+        <h2>One of your slots is crashing.<br>Please delete that slot to register this.</h2>
+        <table>
+            <tr>
+                <th>Course Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            <% courses.forEach((course)=>{ %>
+                <tr>
+                    <th><%= course.courseName %></th>
+                    <th><%= course.startTime %></th>
+                    <th><%= course.endTime %></th>
+                </tr>
+            <% }) %>
+        </table>
+    </body>
+</html>

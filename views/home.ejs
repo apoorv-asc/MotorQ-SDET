@@ -1,0 +1,48 @@
+<html>
+    <style>
+
+    </style>
+    <body>
+        <h2>Status</h2>
+        <p style="color: red;">(-)ve slots mean that you'll be added in waiting list</p>
+        <table>
+            <tr>
+                <th>Course Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Slots Available</th>
+            </tr>
+            <% subjects.forEach((subject)=>{ %>
+                <tr>
+                    <th><%= subject.courseName %></th>
+                    <th><%= subject.startTime %></th>
+                    <th><%= subject.endTime %></th>
+                    <th><%= subject.available %></th>
+                </tr>
+            <% }) %>
+        </table>
+        <h2>Book Course</h2>
+        <form action="/book" method="POST">
+            Course Name 
+            <input type="text" name="courseName">
+            Start Time 
+            <input type="text" name="startTime">
+            End Time 
+            <input type="text" name="endTime">
+            <br>
+            <button type="submit">Book Slot</button>
+        </form>
+        <br>
+        <h2>Delete Course</h2>
+        <form action="/delete" method="POST">
+            Course Name 
+            <input type="text" name="courseName">
+            Start Time 
+            <input type="text" name="startTime">
+            End Time 
+            <input type="text" name="endTime">
+            <br>
+            <button type="submit">Delete Slot</button>
+        </form>
+    </body>
+</html>
